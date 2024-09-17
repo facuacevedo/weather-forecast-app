@@ -1,7 +1,5 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-
-import { FetchData } from "@/components/FetchData";
 
 export default function HomeScreen() {
   return (
@@ -9,7 +7,8 @@ export default function HomeScreen() {
       style={{ backgroundColor: "#fff", width: "100%", height: "100%" }}
     >
       <Text>Index component</Text>
-      <FetchData location="Montevideo" days={"1"} />
+      {/* <Text>{locationData[0].country}</Text> */}
+      {/* <FetchData location="Montevideo" days={"1"} /> */}
     </SafeAreaView>
   );
 }
