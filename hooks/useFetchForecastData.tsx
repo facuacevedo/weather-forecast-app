@@ -3,7 +3,7 @@ import { API_KEY } from "@/constants/apiKey";
 
 interface Props {
   location: string;
-  days: string;
+  days?: string;
 }
 
 export function useFetchForecastData({ location, days }: Props) {
@@ -40,7 +40,7 @@ export function useFetchForecastData({ location, days }: Props) {
     };
 
     fetchForecastEndpoint({ location, days });
-  }, [location]);
+  }, []);
 
   return {
     forecastData,

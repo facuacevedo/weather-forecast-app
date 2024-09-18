@@ -38,7 +38,7 @@ export function useFetchLocationData({ location }: Props) {
       return fetchLocationData(forecastUrl);
     };
     fetchLocationEndpoint({ location });
-  }, [location]);
+  }, []);
 
   return {
     locationData,
