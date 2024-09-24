@@ -1,5 +1,6 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Colors } from "../../constants/Colors";
 
 import { useFetchForecastData } from "@/hooks/useFetchForecastData";
 
@@ -15,17 +16,27 @@ export default function HomeScreen() {
   });
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <Main>
         <LocationDayTitle
           title={forecastData?.location?.name}
           day={forecastData?.location?.localtime}
         />
         <ForecastToday forecastData={forecastData} />
-        <SliderFutureForecast />
       </Main>
+      <Text style={{ paddingLeft: 25, fontSize: 24, color: Colors.gray }}>
+        Today
+      </Text>
+      <SliderFutureForecast />
     </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    width: "100%",
+    height: "100%",
+    backgroundColor: Colors.darkBlue,
+    justifyContent: "space-evenly",
+  },
+});

@@ -8,7 +8,11 @@ export function SliderFutureForecast() {
   const hourData = futureData?.forecast?.forecastday[0]?.hour;
 
   return (
-    <View>
+    <View
+      style={{
+        width: "100%",
+      }}
+    >
       <FlatList
         contentContainerStyle={styles.container}
         data={hourData}
