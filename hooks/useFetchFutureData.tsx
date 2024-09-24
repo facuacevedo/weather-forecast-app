@@ -40,7 +40,7 @@ export function useFetchFutureData({ location }: Props) {
     };
 
     fetchFutureEndpoint({ location });
-  }, []);
+  }, [location]);
 
   return {
     futureData,

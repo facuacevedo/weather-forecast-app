@@ -40,7 +40,7 @@ export function useFetchForecastData({ location, days }: Props) {
     };
 
     fetchForecastEndpoint({ location, days });
-  }, []);
+  }, [location, days]);
 
   return {
     forecastData,

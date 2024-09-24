@@ -31,14 +31,13 @@ export function useFetchLocationData({ location }: Props) {
         setLoadingLocation(false);
       }
     };
-
     const fetchLocationEndpoint = ({ location }: Props) => {
       let forecastUrl = locationEndpoint({ location });
 
       return fetchLocationData(forecastUrl);
     };
     fetchLocationEndpoint({ location });
-  }, []);
+  }, [location]);
 
   return {
     locationData,
