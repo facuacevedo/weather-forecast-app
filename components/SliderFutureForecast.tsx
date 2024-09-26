@@ -1,10 +1,10 @@
-import { FlatList, View, Text, StyleSheet } from "react-native";
+import { FlatList, View, StyleSheet } from "react-native";
 
 import { DataByHour } from "./layouts/DataByHour";
 import { useFetchFutureData } from "@/hooks/useFetchFutureData";
 
 export function SliderFutureForecast() {
-  const { futureData } = useFetchFutureData({ location: "Montevideo" });
+  const { futureData } = useFetchFutureData({ location: "London" });
   const hourData = futureData?.forecast?.forecastday[0]?.hour;
 
   return (

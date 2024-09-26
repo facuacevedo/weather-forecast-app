@@ -7,8 +7,10 @@ import {
   Pressable,
   FlatList,
 } from "react-native";
-
 import { useFetchLocationData } from "@/hooks/useFetchLocationData";
+import { Colors } from "@/constants/Colors";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { ForecastByLocation } from "./layouts/ForecastByLocation";
 
 export function SearcherForecastByLocation() {
   const [location, setLocation] = useState("");
@@ -24,36 +26,63 @@ export function SearcherForecastByLocation() {
 
   return (
     <View>
-      <TextInput
-        style={styles.input}
-        value={location}
-        onChangeText={setLocation}
-      />
-      <Pressable onPress={toggleSearchLocation} style={styles.button}>
-        <Text>Search</Text>
-      </Pressable>
-      {location && (
-        <FlatList
-          data={locationData}
-          renderItem={({ item }) => <Text>{item.country}</Text>}
+      <View style={styles.subContainer}>
+        <TextInput
+          style={styles.input}
+          value={location}
+          onChangeText={setLocation}
+          placeholder="Find your location..."
+          placeholderTextColor={Colors.gray}
         />
-      )}
+        <Pressable onPress={toggleSearchLocation} style={styles.button}>
+          <FontAwesome name="search" size={18} color={Colors.gray} />
+        </Pressable>
+      </View>
+      <View style={styles.listLocations}>
+        {location && (
+          <View>
+            <FlatList
+              data={locationData}
+              keyExtractor={(item) => item.id}
+              renderItem={({ item }) => (
+                <View>
+                  <ForecastByLocation item={item} />
+                </View>
+              )}
+            />
+          </View>
+        )}
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  input: {
+  container: {
+    backgroundColor: Colors.darkBlue,
     width: "100%",
-    height: 40,
-    backgroundColor: "#a7a7a7",
+    height: "100%",
   },
-  button: {
-    width: 60,
-    height: 30,
+  subContainer: {
+    flexDirection: "row",
+    width: "75%",
+    padding: 10,
     alignSelf: "center",
     alignItems: "center",
-    backgroundColor: "#4f8cff",
-    borderRadius: 14,
+    backgroundColor: "rgba(0, 0, 0, 0.3)",
+    borderRadius: 40,
+  },
+  listLocations: {
+    width: "90%",
+    padding: 10,
+    alignSelf: "center",
+  },
+  input: {
+    padding: 6,
+    color: Colors.white,
+    flex: 1,
+  },
+  button: {
+    padding: 8,
   },
 });
