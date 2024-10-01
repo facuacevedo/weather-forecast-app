@@ -8,11 +8,12 @@ export default function Search() {
     <SafeAreaView style={styles.container}>
       <LinearGradient
         colors={["#020024", "#090979", "#00ffc4"]}
-        start={{ x: 0.4, y: 0.8 }}
+        start={{ x: 0.21, y: 0.57 }}
         end={{ x: 0.7, y: -0.1 }}
         style={{
           width: "100%",
           height: "100%",
+          paddingTop: 40,
         }}
       >
         <SearcherForecastByLocation />
